@@ -1,10 +1,13 @@
 .text
 main:
 ldi $r1, 1 				#object position, car increment 0
-sw $r1, 0($r0)			#put frog position in memory 2
-sw $r1, 12($r0)
-sw $r1, 24($r0)
-sw $r1, 36($r0)
+sw $r1, 9($r0)			#---------- 15
+sw $r1, 13($r0)			#15
+sw $r1, 22($r0)			#16
+sw $r1, 27($r0)			#17
+sw $r1, 32($r0)			#18
+sw $r1, 36($r0)			#load cars into positions 19
+sw $r1, 44($r0)			#put frog position in memory 25
 #gameLoop:
 #updateBoard: 			#SET LED display bits
 ldi $r22, 0				#turn off LED display 3

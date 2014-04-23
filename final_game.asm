@@ -15,16 +15,11 @@ ldi $r19, 29			#11
 ldi $r20, 35			#12
 ldi $r21, 41			#---------- 13
 sw $r1, 9($r0)			#---------- 15
-sw $r1, 10($r0)			#15
-sw $r1, 12($r0)			#16
-sw $r1, 15($r0)			#17
-sw $r1, 19($r0)			#18
-sw $r1, 25($r0)			#load cars into positions 19
-sw $r1, 26($r0)			#20
-sw $r1, 27($r0)			#21
-sw $r1, 31($r0)			#22
-sw $r1, 38($r0)			#23
-sw $r1, 40($r0)			#---------- 24
+sw $r1, 13($r0)			#15
+sw $r1, 22($r0)			#16
+sw $r1, 27($r0)			#17
+sw $r1, 32($r0)			#18
+sw $r1, 36($r0)			#load cars into positions 19
 sw $r1, 44($r0)			#put frog position in memory 25
 #gameLoop:
 #processInput:
@@ -134,122 +129,122 @@ ldi $r27, 0				#------------------ 109
 lw $r4, 0($r0)			#110
 sll $r4, $r4, 7
 add $r23, $r23, $r4
-lw $r4, 6($r0)
-sll $r4, $r4, 6
-add $r23, $r23, $r4
-lw $r4, 12($r0)
-sll $r4, $r4, 5
-add $r23, $r23, $r4
-lw $r4, 18($r0)
-sll $r4, $r4, 4
-add $r23, $r23, $r4
-lw $r4, 24($r0)
-sll $r4, $r4, 3
-add $r23, $r23, $r4
-lw $r4, 30($r0)
-sll $r4, $r4, 2
-add $r23, $r23, $r4
+lw $r7, 6($r0)
+sll $r7, $r7, 6
+add $r23, $r23, $r7
+lw $r12, 12($r0)
+sll $r12, $r12, 5
+add $r23, $r23, $r12
+lw $r28, 18($r0)
+sll $r28, $r28, 4
+add $r23, $r23, $r28
+lw $r29, 24($r0)
+sll $r29, $r29, 3
+add $r23, $r23, $r29
+lw $r30, 30($r0)
+sll $r30, $r30, 2
+add $r23, $r23, $r30
 lw $r4, 36($r0)
 sll $r4, $r4, 1
 add $r23, $r23, $r4
-lw $r4, 42($r0)
-add $r23, $r23, $r4 	#132
+lw $r7, 42($r0)
+add $r23, $r23, $r7 	#132
 #column2:				#check 1, 7, 13, 19, 25, 31, 37, 43
-lw $r4, 1($r0)			#133
-sll $r4, $r4, 7
-add $r24, $r24, $r4
-lw $r4, 7($r0)
-sll $r4, $r4, 6
-add $r24, $r24, $r4
-lw $r4, 13($r0)
-sll $r4, $r4, 5
-add $r24, $r24, $r4
-lw $r4, 19($r0)
-sll $r4, $r4, 4	
-add $r24, $r24, $r4
+lw $r12, 1($r0)			#133
+sll $r12, $r12, 7
+add $r24, $r24, $r12
+lw $r28, 7($r0)
+sll $r28, $r28, 6
+add $r24, $r24, $r28
+lw $r29, 13($r0)
+sll $r29, $r29, 5
+add $r24, $r24, $r29
+lw $r30, 19($r0)
+sll $r30, $r30, 4	
+add $r24, $r24, $r30
 lw $r4, 25($r0)
 sll $r4, $r4, 3
 add $r24, $r24, $r4
-lw $r4, 31($r0)
-sll $r4, $r4, 2
-add $r24, $r24, $r4
-lw $r4, 37($r0)
-sll $r4, $r4, 1
-add $r24, $r24, $r4
-lw $r4, 43($r0)
-add $r24, $r24, $r4 	#155
+lw $r7, 31($r0)
+sll $r7, $r7, 2
+add $r24, $r24, $r7
+lw $r12, 37($r0)
+sll $r12, $r12, 1
+add $r24, $r24, $r12
+lw $r28, 43($r0)
+add $r24, $r24, $r28	#155
 #column3: 				#check 2, 8, 14, 20, 26, 32, 38, 44
-lw $r4, 2($r0)			#156
-sll $r4, $r4, 7
-add $r25, $r25, $r4
-lw $r4, 8($r0)
-sll $r4, $r4, 6
-add $r25, $r25, $r4
+lw $r29, 2($r0)			#156
+sll $r29, $r29, 7
+add $r25, $r25, $r29
+lw $r30, 8($r0)
+sll $r30, $r30, 6
+add $r25, $r25, $r30
 lw $r4, 14($r0)
 sll $r4, $r4, 5
 add $r25, $r25, $r4
-lw $r4, 20($r0)
-sll $r4, $r4, 4	
-add $r25, $r25, $r4
-lw $r4, 26($r0)
-sll $r4, $r4, 3	
-add $r25, $r25, $r4
-lw $r4, 32($r0)
-sll $r4, $r4, 2
-add $r25, $r25, $r4
-lw $r4, 38($r0)
-sll $r4, $r4, 1
-add $r25, $r25, $r4
-lw $r4, 44($r0)
-add $r25, $r25, $r4 	#178
+lw $r7, 20($r0)
+sll $r7, $r7, 4	
+add $r25, $r25, $r7
+lw $r12, 26($r0)
+sll $r12, $r12, 3	
+add $r25, $r25, $r12
+lw $r28, 32($r0)
+sll $r28, $r28, 2
+add $r25, $r25, $r28
+lw $r29, 38($r0)
+sll $r29, $r29, 1
+add $r25, $r25, $r29
+lw $r30, 44($r0)
+add $r25, $r25, $r30 	#178
 #column4:				#check 3, 9, 15, 21, 27, 33, 39, 45
 lw $r4, 3($r0)			#179
 sll $r4, $r4, 7	
 add $r26, $r26, $r4
-lw $r4, 9($r0)
-sll $r4, $r4, 6
-add $r26, $r26, $r4
-lw $r4, 15($r0)
-sll $r4, $r4, 5
-add $r26, $r26, $r4
-lw $r4, 21($r0)
-sll $r4, $r4, 4
-add $r26, $r26, $r4
-lw $r4, 27($r0)
-sll $r4, $r4, 3
-add $r26, $r26, $r4
-lw $r4, 33($r0)
-sll $r4, $r4, 2
-add $r26, $r26, $r4
+lw $r7, 9($r0)
+sll $r7, $r7, 6
+add $r26, $r26, $r7
+lw $r12, 15($r0)
+sll $r12, $r12, 5
+add $r26, $r26, $r12
+lw $r28, 21($r0)
+sll $r28, $r28, 4
+add $r26, $r26, $r28
+lw $r29, 27($r0)
+sll $r29, $r29, 3
+add $r26, $r26, $r29
+lw $r30, 33($r0)
+sll $r30, $r30, 2
+add $r26, $r26, $r30
 lw $r4, 39($r0)
 sll $r4, $r4, 1
 add $r26, $r26, $r4
-lw $r4, 45($r0)
-add $r26, $r26, $r4 	#201
+lw $r7, 45($r0)
+add $r26, $r26, $r7 	#201
 #column5:				#check 4, 10, 16, 22, 28, 34, 40, 46
-lw $r4, 4($r0)			#202
-sll $r4, $r4, 7
-add $r27, $r27, $r4
-lw $r4, 10($r0)
-sll $r4, $r4, 6
-add $r27, $r27, $r4
-lw $r4, 16($r0)
-sll $r4, $r4, 5
-add $r27, $r27, $r4
-lw $r4, 22($r0)
-sll $r4, $r4, 4
-add $r27, $r27, $r4
+lw $r12, 4($r0)			#202
+sll $r12, $r12, 7
+add $r27, $r27, $r12
+lw $r28, 10($r0)
+sll $r28, $r28, 6
+add $r27, $r27, $r28
+lw $r29, 16($r0)
+sll $r29, $r29, 5
+add $r27, $r27, $r29
+lw $r30, 22($r0)
+sll $r30, $r30, 4
+add $r27, $r27, $r30
 lw $r4, 28($r0)
 sll $r4, $r4, 3
 add $r27, $r27, $r4
-lw $r4, 34($r0)
-sll $r4, $r4, 2
-add $r27, $r27, $r4
-lw $r4, 40($r0)
-sll $r4, $r4, 1
-add $r27, $r27, $r4
-lw $r4, 46($r0)
-add $r27, $r27, $r4 	#224
+lw $r7, 34($r0)
+sll $r7, $r7, 2
+add $r27, $r27, $r7
+lw $r12, 40($r0)
+sll $r12, $r12, 1
+add $r27, $r27, $r12
+lw $r28, 46($r0)
+add $r27, $r27, $r28	#224
 #draw:					#Draw LED MATRIX
 ldi $r22, 1 			#turn on LED display 225
 j 26 					#gameLoop 226
