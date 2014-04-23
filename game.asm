@@ -1,14 +1,10 @@
-.data
-
 .text
 main: 
 	ldi $r1, 1 				#object position, car increment
 	ldi $r2, 2 				#
 	ldi $r3, 44 			#current frog position, set to starting position
-	sw $r1, 0($r3)			#put frog position in memory
 	ldi $r5, 44 			#start position, bottom boundary
 	ldi $r6, 6 				#frog increment
-	ldi $r12, 0				#random number comparator
 	ldi $r13, 3 			#
 	ldi $r14, 4 			#
 	ldi $r15, 5				#----------
@@ -29,6 +25,7 @@ main:
 	sw $r1, 31($r0)			#
 	sw $r1, 38($r0)			#
 	sw $r1, 40($r0)			#----------
+	sw $r1, 44($r0)			#put frog position in memory	
 gameLoop:
 	processInput:
 		nop 					#-----------
@@ -40,7 +37,7 @@ gameLoop:
 		j moveCars
 	checkBot:					#moves down if not at bottom boundary
 		ldi $r8, 0				#resets down to 0
-		bne $r3, $r5 frogDown 	#if not at bottom
+		bne $r3, $r5, frogDown 	#if not at bottom
 		j moveCars
 	frogDown:
 		sw $r0, 0($r3) 			#set old position to nothing
@@ -136,121 +133,121 @@ gameLoop:
 	column1: 					#check 0, 6, 12, 18, 24, 30, 36, 42
 		lw $r4, 0($r0)
 		add $r23, $r23, $r4
-		sll $r23, $r23, $r1
+		sll $r23, $r23, 1
 		lw $r4, 6($r0)
 		add $r23, $r23, $r4
-		sll $r23, $r23, $r1
+		sll $r23, $r23, 1
 		lw $r4, 12($r0)
 		add $r23, $r23, $r4
-		sll $r23, $r23, $r1
+		sll $r23, $r23, 1
 		lw $r4, 18($r0)
 		add $r23, $r23, $r4
-		sll $r23, $r23, $r1	
+		sll $r23, $r23, 1	
 		lw $r4, 24($r0)
 		add $r23, $r23, $r4
-		sll $r23, $r23, $r1
+		sll $r23, $r23, 1
 		lw $r4, 30($r0)
 		add $r23, $r23, $r4
-		sll $r23, $r23, $r1
+		sll $r23, $r23, 1
 		lw $r4, 36($r0)
 		add $r23, $r23, $r4
-		sll $r23, $r23, $r1
+		sll $r23, $r23, 1
 		lw $r4, 42($r0)
 		add $r23, $r23, $r4
 	column2:					#check 1, 7, 13, 19, 25, 31, 37, 43
 		lw $r4, 1($r0)
 		add $r24, $r24, $r4
-		sll $r24, $r24, $r1
+		sll $r24, $r24, 1
 		lw $r4, 7($r0)
 		add $r24, $r24, $r4
-		sll $r24, $r24, $r1
+		sll $r24, $r24, 1
 		lw $r4, 13($r0)
 		add $r24, $r24, $r4
-		sll $r24, $r24, $r1
+		sll $r24, $r24, 1
 		lw $r4, 19($r0)
 		add $r24, $r24, $r4
-		sll $r24, $r24, $r1	
+		sll $r24, $r24, 1	
 		lw $r4, 25($r0)
 		add $r24, $r24, $r4
-		sll $r24, $r24, $r1
+		sll $r24, $r24, 1
 		lw $r4, 31($r0)
 		add $r24, $r24, $r4
-		sll $r24, $r24, $r1
+		sll $r24, $r24, 1
 		lw $r4, 37($r0)
 		add $r24, $r24, $r4
-		sll $r24, $r24, $r1
+		sll $r24, $r24, 1
 		lw $r4, 43($r0)
 		add $r24, $r24, $r4
 	column3: 					#check 2, 8, 14, 20, 26, 32, 38, 44
 		lw $r4, 2($r0)
 		add $r25, $r25, $r4
-		sll $r25, $r25, $r1
+		sll $r25, $r25, 1
 		lw $r4, 8($r0)
 		add $r25, $r25, $r4
-		sll $r25, $r25, $r1
+		sll $r25, $r25, 1
 		lw $r4, 14($r0)
 		add $r25, $r25, $r4
-		sll $r25, $r25, $r1
+		sll $r25, $r25, 1
 		lw $r4, 20($r0)
 		add $r25, $r25, $r4
-		sll $r25, $r25, $r1	
+		sll $r25, $r25, 1	
 		lw $r4, 26($r0)
 		add $r25, $r25, $r4
-		sll $r25, $r25, $r1
+		sll $r25, $r25, 1
 		lw $r4, 32($r0)
 		add $r25, $r25, $r4
-		sll $r25, $r25, $r1
+		sll $r25, $r25, 1
 		lw $r4, 38($r0)
 		add $r25, $r25, $r4
-		sll $r25, $r25, $r1
+		sll $r25, $r25, 1
 		lw $r4, 44($r0)
 		add $r25, $r25, $r4
 	column4:					#check 3, 9, 15, 21, 27, 33, 39, 45
 		lw $r4, 3($r0)
 		add $r26, $r26, $r4
-		sll $r26, $r26, $r1
+		sll $r26, $r26, 1
 		lw $r4, 9($r0)
 		add $r26, $r26, $r4
-		sll $r26, $r26, $r1
+		sll $r26, $r26, 1
 		lw $r4, 15($r0)
 		add $r26, $r26, $r4
-		sll $r26, $r26, $r1
+		sll $r26, $r26, 1
 		lw $r4, 21($r0)
 		add $r26, $r26, $r4
-		sll $r26, $r26, $r1	
+		sll $r26, $r26, 1	
 		lw $r4, 27($r0)
 		add $r26, $r26, $r4
-		sll $r26, $r26, $r1
+		sll $r26, $r26, 1
 		lw $r4, 33($r0)
 		add $r26, $r26, $r4
-		sll $r26, $r26, $r1
+		sll $r26, $r26, 1
 		lw $r4, 39($r0)
 		add $r26, $r26, $r4
-		sll $r26, $r26, $r1
+		sll $r26, $r26, 1
 		lw $r4, 45($r0)
 		add $r26, $r26, $r4
 	column5:					#check 4, 10, 16, 22, 28, 34, 40, 46
 		lw $r4, 4($r0)
 		add $r27, $r27, $r4
-		sll $r27, $r27, $r1
+		sll $r27, $r27, 1
 		lw $r4, 10($r0)
 		add $r27, $r27, $r4
-		sll $r27, $r27, $r1
+		sll $r27, $r27, 1
 		lw $r4, 16($r0)
 		add $r27, $r27, $r4
-		sll $r27, $r27, $r1
+		sll $r27, $r27, 1
 		lw $r4, 22($r0)
 		add $r27, $r27, $r4
-		sll $r27, $r27, $r1	
+		sll $r27, $r27, 1	
 		lw $r4, 28($r0)
 		add $r27, $r27, $r4
-		sll $r27, $r27, $r1
+		sll $r27, $r27, 1
 		lw $r4, 34($r0)
 		add $r27, $r27, $r4
-		sll $r27, $r27, $r1
+		sll $r27, $r27, 1
 		lw $r4, 40($r0)
 		add $r27, $r27, $r4
-		sll $r27, $r27, $r1
+		sll $r27, $r27, 1
 		lw $r4, 46($r0)
 		add $r27, $r27, $r4
 	draw:						#Draw LED MATRIX
@@ -261,3 +258,5 @@ win:
 	j main
 lose: 						#can subtract score, save high score, etc.
 	j main
+
+.data
