@@ -89,6 +89,6 @@ nop
 nop
 nop
 nop
-j 3 					#gameLoop 29
+j 3 					#gameLoop
 
 .data

@@ -1,6 +1,6 @@
 .text
 main: 
-ldi $r1, 1 				#object position, car increment 1
+ldi $r1, 1 				#object position, car increment 0
 ldi $r2, 2 				#2
 ldi $r3, 44 			#current frog position, set to starting position 3
 ldi $r5, 44 			#start position, bottom boundary 4
