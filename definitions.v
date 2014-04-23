@@ -1,3 +1,15 @@
+module ringCounter5(clock, out);
+    input clock;
+    output [4:0] out;
+    myDff dff0(.d(~out[4]), .aclr(0), .we(1), .clk(clock), .q(out[0]));
+    genvar i;
+    generate
+        for (i = 1; i <= 4; i = i + 1) begin:loop1
+            myDff dff1(.d(out[i-1]), .aclr(0), .we(1), .clk(clock), .q(out[i]));
+        end
+    endgenerate
+endmodule
+
 module counter16(ctrl, clk, out, ready, restart, reset, test);
 	input ctrl, clk, restart, reset;
 	output out, ready, test;
