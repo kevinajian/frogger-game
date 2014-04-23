@@ -145,26 +145,6 @@ module dff32(d, aclr, we, clk, q);
 	endgenerate
 endmodule
 
-module dff32Special(d, aclr, we, clk, q, testD, testQ, testAclr, testWE, testClk);
-	input [31:0] d;
-	input aclr, we, clk;
-	output [31:0] q, testD, testQ;
-	output testAclr, testWE, testClk;
-
-	assign testD = d;
-	assign testQ = q;
-	assign testAclr = aclr;
-	assign testWE = we;
-	assign testClk = clk;
-
-	genvar i;
-	generate
-		for (i = 0; i <= 31; i = i + 1) begin: loop1
-			myDff dff0(.d(d[i]), .aclr(aclr), .we(we), .clk(clk), .q(q[i]));
-		end
-	endgenerate
-endmodule
-
 module thirtyTwoAdd(inputA, inputB, cIn, cOut, out);
 	input [31:0] inputA, inputB;
 	input cIn;
@@ -761,27 +741,21 @@ module signEx27(data, out);
 	endgenerate
 endmodule
 
-module stage(inputA, inputB, inputC, inputD, clk, we, reset, outA, outB, outC, outD, testD, testQ, testAclr, testWE, testClk);
+module stage(inputA, inputB, inputC, inputD, clk, we, reset, outA, outB, outC, outD);
 	input 	[31:0] 	inputA, inputB, inputC, inputD;
 	input 			clk, we, reset;
-	output 	[31:0] 	outA, outB, outC, outD, testD, testQ;
-	output 			testAclr, testWE, testClk;
+	output 	[31:0] 	outA, outB, outC, outD;
 
 	dff32 dataA(	.d(inputA),
 					.aclr(reset),
 					.we(we),
 					.clk(clk),
 					.q(outA));
-	dff32Special dataB(	.d(inputB),
-						.aclr(reset),
-						.we(we),
-						.clk(clk),
-						.q(outB),
-						.testD(testD),
-						.testQ(testQ),
-						.testAclr(testAclr),
-						.testWE(testWE),
-						.testClk(testClk));
+	dff32 dataB(	.d(inputB),
+					.aclr(reset),
+					.we(we),
+					.clk(clk),
+					.q(outB));
 	dff32 dataC(	.d(inputC),
 					.aclr(reset),
 					.we(we),

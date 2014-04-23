@@ -1,20 +1,16 @@
 module skeleton(	inclock, resetn, ps2_clock, ps2_data, debug_word, leds, 
 					lcd_data, lcd_rw, lcd_en, lcd_rs, lcd_on, lcd_blon, 	
 					seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, key2_pressed, key3_pressed,
-					// reg8out, reg9out,
-					col1, col2, col3, col4, col5, testRegWriteData, testRegWriteAddr, testRegWE, testWBRd, testIRWB, testIRFetch, testIRDecode,
-					testIRExec, testIRMem, testD, testQ, testFdWE);
+					testRegWriteData, testRegWriteAddr, testRegWE, ledLeads);
 
 	input 			inclock, resetn, key2_pressed, key3_pressed;
 	inout 			ps2_data, ps2_clock;
 	
-	output 			lcd_rw, lcd_en, lcd_rs, lcd_on, lcd_blon,
-					// reg8out, reg9out,
-					col1, col2, col3, col4, col5, testRegWE, testFdWE;
+	output 			lcd_rw, lcd_en, lcd_rs, lcd_on, lcd_blon, testRegWE;
 	output 	[7:0] 	leds, lcd_data;
 	output 	[6:0] 	seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8;
-	output 	[4:0] 	testRegWriteAddr, testWBRd;
-	output 	[31:0] 	debug_word, testRegWriteData, testIRWB, testIRFetch, testIRDecode, testIRExec, testIRMem, testD, testQ;
+	output 	[4:0] 	testRegWriteAddr;
+	output 	[31:0] 	debug_word, testRegWriteData;
 	
 	wire			clock;
 	wire			lcd_write_en;
@@ -22,9 +18,8 @@ module skeleton(	inclock, resetn, ps2_clock, ps2_data, debug_word, leds,
 	wire	[7:0]	ps2_key_data;
 	wire			ps2_key_pressed;
 	wire	[7:0]	ps2_out;
-	// wire 	[39:0] 	gridValues;	
-	// wire 			gridReady;
-
+	wire 	[39:0] 	gridValues;	
+	wire 			gridReady;
 	
 	// clock divider (by 5, i.e., 10 MHz)
 	//pll div(inclock,clock);
@@ -34,16 +29,14 @@ module skeleton(	inclock, resetn, ps2_clock, ps2_data, debug_word, leds,
 	
 	// your processor
 	processor myprocessor(	clock, ~resetn, ps2_key_pressed, ps2_out, lcd_write_en, debug_word, key2_pressed, key3_pressed,
-							testRegWriteData, testRegWriteAddr, testRegWE, testWBRd, testIRWB, testIRFetch, testIRDecode,
-							testIRExec, testIRMem, testFdWE, testD, testQ);
-							// gridValues, gridReady, reg8out, reg9out); //lcd_write_data);
+							testRegWriteData, testRegWriteAddr, testRegWE, gridValues, gridReady, reg8out, reg9out); //lcd_write_data);
 	
 	// keyboard controller
 	PS2_Interface myps2(clock, resetn, ps2_clock, ps2_data, ps2_key_data, ps2_key_pressed, ps2_out);
 	
 	// lcd controller
 	lcd mylcd(clock, ~resetn, lcd_write_en, lcd_write_data[7:0], lcd_data, lcd_rw, lcd_en, lcd_rs, lcd_on, lcd_blon);
-	
+
 	// LED DISPLAY CODE HERE
 	wire [4:0] colActive;
 	wire [7:0] col1, col2, col3, col4, col5;
@@ -67,9 +60,8 @@ module skeleton(	inclock, resetn, ps2_clock, ps2_data, debug_word, leds,
 	assign ledLeads[7]  = gridReady & (colActive[4]&col1[5] | colActive[3]&col2[5] | colActive[2]&col3[5] | colActive[1]&col4[5] | colActive[0]&col5[5]); //LED pin 8, row 3
 	assign ledLeads[8]  = gridReady & (colActive[4]&col1[7] | colActive[3]&col2[7] | colActive[2]&col3[7] | colActive[1]&col4[7] | colActive[0]&col5[7]); //LED pin 9, row 1
 	assign ledLeads[9]  = ~(gridReady & colActive[1]); //LED pin 10, col 4
-	assign ledLeads[10] = ledLeads[3] //LED pin 11, col 3
+	assign ledLeads[10] = ledLeads[3]; //LED pin 11, col 3
 	assign ledLeads[11] = gridReady & (colActive[4]&col1[4] | colActive[3]&col2[4] | colActive[2]&col3[4] | colActive[1]&col4[4] | colActive[0]&col5[4]); //LED pin 12, row 4
 	assign ledLeads[12] = ~(gridReady & colActive[4]); //LED pin 13, col 1
 	assign ledLeads[13] = gridReady & (colActive[4]&col1[6] | colActive[3]&col2[6] | colActive[2]&col3[6] | colActive[1]&col4[6] | colActive[0]&col5[6]); //LED pin 14, row 2
-
 endmodule
