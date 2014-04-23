@@ -61,3 +61,5 @@ add $r25, $r25, $r4 	#50
 #draw:					#Draw LED MATRIX
 ldi $r22, 1 			#turn on LED display 51
 j 27 					#gameLoop 52
+
+.data
