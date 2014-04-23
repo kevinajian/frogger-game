@@ -33,6 +33,62 @@ lw $r4, 44($r0)
 add $r25, $r25, $r4 	#27
 #draw:					#Draw LED MATRIX
 ldi $r22, 1 			#turn on LED display 28
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
 j 3 					#gameLoop 29
 
 .data
