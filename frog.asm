@@ -2,9 +2,16 @@
 main:
 ldi $r1, 1 				#object position, car increment 0
 sw $r1, 44($r0)			#put frog position in memory 2
+sw $r1, 27($r0)
+sw $r1, 12($r0)
 #gameLoop:
 #updateBoard: 			#SET LED display bits
 ldi $r22, 0				#turn off LED display 3
+ldi $r23, 0				#------------------ 105
+ldi $r24, 0				#106
+ldi $r25, 0				#reset display bits 107
+ldi $r26, 0				#108
+ldi $r27, 0				#------------------ 109
 #column1: 				#check 0, 6, 12, 18, 24, 30, 36, 42
 lw $r4, 0($r0)			#110
 sll $r4, $r4, 7

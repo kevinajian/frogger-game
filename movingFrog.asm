@@ -33,7 +33,11 @@ lw $r4, 0($r3)			#24
 sw $r1, 0($r3) 			#set new position to frog 25
 #updateBoard: 			#SET LED display bits
 ldi $r22, 0				#turn off LED display 26
-ldi $r25, 0				#reset display bits 27
+ldi $r23, 0				#------------------ 105
+ldi $r24, 0				#106
+ldi $r25, 0				#reset display bits 107
+ldi $r26, 0				#108
+ldi $r27, 0				#------------------ 109
 #column1: 				#check 0, 6, 12, 18, 24, 30, 36, 42
 lw $r4, 0($r0)			#110
 sll $r4, $r4, 7
