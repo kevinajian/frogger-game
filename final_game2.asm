@@ -43,7 +43,7 @@ j 49					#moveCars 35
 sw $r0, 0($r3) 			#set old position to nothing 36
 add $r3, $r3, $r6 		#frog position down 37
 lw $r4, 0($r3)			#38
-custi1 $r4, $r1, 189 	#lose 	#if a car is already there 39
+custi1 $r4, $r1, 184 	#lose 	#if a car is already there 39
 sw $r1, 0($r3) 			#set new position to frog 40
 j 49					#moveCars 41
 #frogUp:
@@ -51,9 +51,9 @@ ldi $r9, 0				#resets up to 0 42
 sw $r0, 0($r3) 			#set old position to nothing 43
 sub $r3, $r3, $r6 		#frog position up 44
 lw $r4, 0($r3)			# 45
-custi1 $r4, $r1, 182 	#lose 	#if a car is already there 46
+custi1 $r4, $r1, 177 	#lose 	#if a car is already there 46
 sw $r1, 0($r3) 			#set new position to frog 47
-custi1 $r3, $r2, 178 	#win 	#if frog position is at 2 48
+custi1 $r3, $r2, 173 	#win 	#if frog position is at 2 48
 #moveCars:
 ldi $r10, 6 			#i=6 49
 #moveCarsLoop: 			#for i=6 -> 40
@@ -96,7 +96,7 @@ j 50					#moveCarsLoop 77
 #carLeft:
 sw $r0, 0($r10)			#set old position to nothing 78
 sub $r10, $r10, $r1 	#car position left 79
-custi1 $r10, $r3, 148 	#lose	#if frog is there 80
+custi1 $r10, $r3, 143 	#lose	#if frog is there 80
 custi1 $r10, $r15, 5 	#wrapL	#----------- 81
 custi1 $r10, $r18, 4 	#wrapL	#if car moved off board 82
 custi1 $r10, $r19, 3 	#wrapL	#----------- 83
@@ -111,7 +111,7 @@ j 50 					#moveCarsLoop 90
 #carRight:
 sw $r0, 0($r10)			#set old position to nothing 91
 addi $r10, $r10, 1 		#car position right 92
-custi1 $r10, $r3, 135 	#lose	#if frog is there 93
+custi1 $r10, $r3, 130 	#lose	#if frog is there 93
 custi1 $r10, $r17, 5	#wrapR	#----------- 94
 custi1 $r10, $r18, 4 	#wrapR	#if car moved off board 95
 custi1 $r10, $r21, 3 	#wrapR	#----------- 96
